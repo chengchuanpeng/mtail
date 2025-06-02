@@ -68,7 +68,7 @@ $(TOGO):
 
 GOYACC = $(GOBIN)/goyacc
 $(GOYACC):
-	go install golang.org/x/tools/cmd/goyacc@v.031.0
+	go install golang.org/x/tools/cmd/goyacc@latest
 
 GOFUZZBUILD = $(GOBIN)/go114-fuzz-build
 $(GOFUZZBUILD):
