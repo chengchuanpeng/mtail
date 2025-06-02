@@ -85,6 +85,18 @@ alerting tool, like [Prometheus](http://prometheus.io).
 to!](http://www.imdb.com/title/tt0151804/quotes/?item=qt0386890)  It has the
 extraction skills!  It is good at dealing with log files!!
 
+### Source-to-Program Mapping
+
+By default, mtail processes every log line with every loaded program. For large installations with many logs and programs, this can be inefficient. You can optimize performance by mapping specific log sources to specific programs via the `--source_mapping_file` option:
+
+```
+mtail --progs=/etc/mtail/progs --logs=/var/log/syslog,/var/log/apache2/*.log --source_mapping_file=/etc/mtail/source_mapping.yaml
+```
+
+This file can be in YAML or JSON format and allows you to specify which programs should process which log sources. See the `examples/source_mapping.yaml` and `examples/source_mapping.json` files for examples.
+
+You can also control how to handle unmapped sources with the `--unmapped_behavior` flag. Valid values are "all" (process with all programs, the default) or "none" (don't process unmapped sources with any program).
+
 ## Read More
 
 Full documentation at http://google.github.io/mtail/
